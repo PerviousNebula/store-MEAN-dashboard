@@ -1,0 +1,132 @@
+<form [formGroup]="customerFg" (ngSubmit)="handleSubmit()">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <label class="form-label fw-bold">Name</label>
+      <input
+        formControlName="name"
+        class="form-control"
+        type="text"
+      />
+    </div>
+    <div class="col-12 col-md-6 mt-4 mt-md-0">
+      <label class="form-label fw-bold">Last name</label>
+      <input
+        formControlName="lastName"
+        class="form-control"
+        type="text"
+        autocomplete="off"
+      />
+    </div>
+    <div class="col-12 col-md-6 mt-4">
+      <label class="form-label fw-bold">Email</label>
+      <input
+        formControlName="email"
+        class="form-control"
+        type="text"
+      />
+    </div>
+    <div class="col-12 col-md-6 mt-4">
+      <label class="form-label fw-bold">Password</label>
+      <input
+        formControlName="password"
+        class="form-control"
+        type="password"
+      />
+    </div>
+    <div class="col-12 mt-4">
+      <label class="form-label fw-bold">Archive</label>
+      <div class="form-check form-switch">
+        <input
+          formControlName="archive"
+          class="form-check-input"
+          type="checkbox"
+        />
+      </div>
+    </div>
+  </div>
+  <!-- <button
+    class="btn text-primary text-decoration-underline text-start mt-2"
+    type="button"
+    (click)="addShippingAddress()"
+  >
+    <i class="fas fa-plus me-2"></i>
+    Add shipping address
+  </button> -->
+  <!-- <div
+    formGroupName="shippingAddresses"
+    *ngFor="let address of getShippingAddresses.controls; let i = index"
+  >
+    <div [formGroupName]="i">
+      <div class="row mt-4">
+        <div class="col-12">
+          <label class="form-label fw-bold">Name</label>
+          <input
+            class="form-control"
+            type="text"
+            formControlName="name"
+          />
+        </div>
+        <div class="col-12 mt-4">
+          <label class="form-label fw-bold">Shipping Address 1</label>
+          <input
+            formControlName="shippingAddress1"
+            class="form-control"
+            type="text"
+          />
+        </div>
+        <div class="col-12 col-md-6 mt-4">
+          <label class="form-label fw-bold">Country</label>
+          <select
+            formControlName="country"
+            class="form-select"
+          >
+            <option value="null">Choose a country</option>
+          </select>
+        </div>
+        <div class="col-12 col-md-6 mt-4">
+          <label class="form-label fw-bold">State</label>
+          <input
+            formControlName="state"
+            class="form-control"
+            type="text"
+          />
+        </div>
+        <div class="col-12 col-md-6 mt-4">
+          <label class="form-label fw-bold">City</label>
+          <input
+            formControlName="city"
+            class="form-control"
+            type="text"
+          />
+        </div>
+        <div class="col-12 col-md-6 mt-4">
+          <label class="form-label fw-bold">Postal code</label>
+          <input
+            formControlName="zip"
+            class="form-control"
+            type="text"
+          />
+        </div>
+        <button
+          type="button"
+          class="btn text-danger text-decoration-underline text-start mt-4"
+          (click)="removeShippingAddress(i)"
+        >
+          Remove address
+        </button>
+      </div>
+    </div>
+  </div> -->
+  <app-shipping-address-form
+    [addMultipleAddresses]="true"
+    (validShippingAddresses)="updateShippingAddresses($event)"
+  >
+  </app-shipping-address-form>
+  <button
+    type="submit"
+    class="btn btn-success w-100"
+    [disabled]="customerFg.invalid"
+  >
+    Save
+  </button>
+</form>

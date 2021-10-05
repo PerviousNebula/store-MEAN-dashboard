@@ -1,0 +1,53 @@
+<div class="animate__animated animate__fadeIn">
+  <app-page-title
+    [headerTxt]="'Orders'"
+    [addLinkTxt]="'Add order'"
+    [addLinkUrl]="'/orders/new'"
+  >
+  </app-page-title>
+  <div class="card shadow-md mt-5">
+    <div class="card-body">
+      <app-orders-filter-form></app-orders-filter-form>
+    </div>
+  </div>
+  <div class="card shadow-md mt-5">
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Order number</th>
+            <th scope="col">Email</th>
+            <th scope="col">Country</th>
+            <th scope="col">Price</th>
+            <th scope="col">Archive</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>w-234</td>
+            <td>arturo@gmail.com</td>
+            <td>México</td>
+            <td>{{ 299 | currency }}</td>
+            <td>
+              <span class="badge bg-success">Online</span>
+            </td>
+            <td>
+              <a class="btn btn-secondary btn-sm me-1" href="#" routerLink="/orders/123">
+                <i class="fas fa-edit text-white"></i>
+              </a>
+              <button
+                type="button"
+                class="btn btn-danger btn-sm"
+              >
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

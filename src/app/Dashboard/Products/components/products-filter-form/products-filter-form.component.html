@@ -1,0 +1,80 @@
+<form [formGroup]="productsFilterFg" (ngSubmit)="handleSubmit()">
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <label class="form-label fw-bold">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="name"
+      />
+    </div>
+    <div class="col-12 col-md-4 mt-4 mt-md-0">
+      <label class="form-label fw-bold">Category</label>
+      <select
+        class="form-select"
+        formControlName="categoryId"
+      >
+        <option value="null" selected>All product categories</option>
+      </select>
+    </div>
+    <div class="col-12 col-md-4 mt-4 mt-md-0">
+      <label class="form-label fw-bold">Archive</label>
+      <div class="form-check form-switch d-flex align-items-end">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          formControlName="archive"
+        />
+      </div>
+    </div>
+    <div class="col-12 col-md-6 mt-4">
+      <label class="form-label fw-bold">Min price</label>
+      <input
+        class="form-control"
+        type="number"
+        formControlName="minPrice"
+      />
+    </div>
+    <div class="col-12 col-md-6 mt-4">
+      <label class="form-label fw-bold">Max price</label>
+      <input
+        class="form-control"
+        type="number"
+        formControlName="maxPrice"
+      />
+    </div>
+    <div class="col-12 col-md-6 mt-4">
+      <label class="form-label fw-bold">Min stock</label>
+      <input
+        class="form-control"
+        type="number"
+        formControlName="minStock"
+      />
+    </div>
+    <div class="col-12 col-md-6 mt-4">
+      <label class="form-label fw-bold">Max stock</label>
+      <input
+        class="form-control"
+        type="number"
+        formControlName="maxStock"
+      />
+    </div>
+    <div class="col-12 col-md-2 offset-md-8 mt-4">
+      <button
+        type="button"
+        class="btn btn-dark w-100"
+        (click)="clearFilters()"
+      >
+        Clear
+      </button>
+    </div>
+    <div class="col-12 col-md-2 text-end mt-2 mt-md-4">
+      <button
+        type="submit"
+        class="btn btn-success w-100"
+      >
+        Search
+      </button>
+    </div>
+  </div>
+</form>

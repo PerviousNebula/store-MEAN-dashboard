@@ -1,0 +1,41 @@
+<form [formGroup]="loginFg" (ngSubmit)="login()" novalidate>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label fw-bold">Email</label>
+    <input
+      type="email"
+      formControlName="email"
+      class="form-control"
+      [class]="{'border-danger': loginFg.controls.email.invalid && loginFg.controls.email.value }"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      autocomplete="off"
+    />
+  </div>
+  <div class="mb-4">
+    <label for="exampleInputPassword1" class="form-label fw-bold">Password</label>
+    <input
+      type="password"
+      formControlName="password"
+      class="form-control"
+      id="exampleInputPassword1"
+    />
+  </div>
+  <a class="d-block mb-4 text-secondary" href="#">Forgot your password?</a>
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <label class="float-start mt-2 pointer">
+        <input type="checkbox" />
+        Remember me
+      </label>
+    </div>
+    <div class="col-12 col-md-6">
+      <button
+        type="submit"
+        class="btn btn-success p-2 w-100"
+        [disabled]="loginFg.invalid"
+      >
+        LOG IN
+      </button>
+    </div>
+  </div>
+</form>

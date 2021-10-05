@@ -1,0 +1,65 @@
+<div class="animate__animated animate__fadeIn">
+  <app-page-title
+    [headerTxt]="'Categories'"
+    [addLinkTxt]="'Add category'"
+    [addLinkUrl]="'/categories/new'"
+  >
+  </app-page-title>
+  <div class="card shadow-md mt-5">
+    <div class="card-body">
+      <app-categories-filter-form></app-categories-filter-form>
+    </div>
+  </div>
+  <div class="card shadow-md mt-5">
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Archive</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Men</td>
+            <td>
+              <span class="badge bg-danger">Offline</span>
+            </td>
+            <td>
+              <a class="btn btn-secondary btn-sm me-1" href="#" routerLink="/categories/123">
+                <i class="fas fa-edit text-white"></i>
+              </a>
+              <button
+                type="button"
+                class="btn btn-danger btn-sm"
+              >
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Women</td>
+            <td>
+              <span class="badge bg-success">Online</span>
+            </td>
+            <td>
+              <a class="btn btn-secondary btn-sm me-1" href="#" routerLink="/categories/123">
+                <i class="fas fa-edit text-white"></i>
+              </a>
+              <button
+                type="button"
+                class="btn btn-danger btn-sm"
+              >
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

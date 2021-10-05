@@ -1,0 +1,204 @@
+<form>
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseOne"
+          aria-expanded="true"
+          aria-controls="collapseOne"
+        >
+          1. Select a customer or add a new shipping address
+        </button>
+      </h4>
+      <div
+        id="collapseOne"
+        class="accordion-collapse collapse show"
+        aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <div class="row">
+            <div class="col-12 col-md-6 mt-4">
+              <label class="form-label fw-bold">Customer</label>
+              <select
+                class="form-select"
+                [disabled]="showShippingAddressForm"
+              >
+                <option value="null">Choose a customer</option>
+                <option value="">Arturo N. - arturo@gmail.com</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-6 d-flex align-items-end mt-4 mt-md-0">
+              <button
+                class="btn text-primary"
+                type="button"
+                (click)="showShippingAddressForm = !showShippingAddressForm"
+              >
+                <i class="fas fa-plus me-2"></i>
+                {{ showShippingAddressForm ? 'Select from customer' : 'Add shipping address manually' }}
+              </button>
+            </div>
+            <div *ngIf="!showShippingAddressForm" class="col-12 mt-4">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <label>
+                    <input
+                      class="me-3"
+                      type="checkbox"
+                    />
+                    Home - Inf. Patrimonio Murua, Av. Andalucia No. 3530, México, BC, Tijuana CP 22465
+                  </label>
+                </li>
+              </ul>
+            </div>
+            <div *ngIf="showShippingAddressForm" class="col-12">
+              <app-shipping-address-form
+                [addMultipleAddresses]="false"
+                (validShippingAddresses)="updateShippingAddress($event)"
+              >
+              </app-shipping-address-form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseTwo"
+          aria-expanded="false"
+          aria-controls="collapseTwo"
+        >
+          2. Select products
+        </button>
+      </h2>
+      <div
+        id="collapseTwo"
+        class="accordion-collapse collapse"
+        aria-labelledby="headingTwo"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <div class="row">
+            <div class="col-6 col-md-2">
+              <div class="card w-100 position-relative">
+                <span
+                  class="badge rounded-circle bg-danger p-1 text-white position-absolute pointer"
+                  style="font-size: 12px; top: -5px; right: -5px;"
+                >
+                  <i class="fas fa-times"></i>
+              </span>
+                <img src="assets/img/rickAndMorty.jpg" class="card-img-top" alt="shirt.jpg">
+                <div class="card-body">
+                  <span class="d-block fw-bold" style="font-size: 12px;">Size: <span class="fw-normal">S</span></span>
+                  <span class="d-block fw-bold" style="font-size: 12px;">Quantity: <span class="fw-normal">2</span></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-2">
+              <div class="card w-100 position-relative">
+                <span
+                  class="badge rounded-circle bg-danger p-1 text-white position-absolute pointer"
+                  style="font-size: 12px; top: -5px; right: -5px;"
+                >
+                  <i class="fas fa-times"></i>
+              </span>
+                <img src="assets/img/rickAndMorty.jpg" class="card-img-top" alt="shirt.jpg">
+                <div class="card-body">
+                  <span class="d-block fw-bold" style="font-size: 12px;">Size: <span class="fw-normal">S</span></span>
+                  <span class="d-block fw-bold" style="font-size: 12px;">Quantity: <span class="fw-normal">2</span></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-2">
+              <div class="card w-100 position-relative">
+                <span
+                  class="badge rounded-circle bg-danger p-1 text-white position-absolute pointer"
+                  style="font-size: 12px; top: -5px; right: -5px;"
+                >
+                  <i class="fas fa-times"></i>
+              </span>
+                <img src="assets/img/rickAndMorty.jpg" class="card-img-top" alt="shirt.jpg">
+                <div class="card-body">
+                  <span class="d-block fw-bold" style="font-size: 12px;">Size: <span class="fw-normal">S</span></span>
+                  <span class="d-block fw-bold" style="font-size: 12px;">Quantity: <span class="fw-normal">2</span></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 mt-4">
+              <label class="form-label fw-bold">Name</label>
+              <input
+                type="text"
+                class="form-control w-100"
+              />
+              <table class="table mt-4">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Quantity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        disabled
+                      >
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </th>
+                    <td width="15%">
+                      <img
+                        class="img-thumbnail w-50"
+                        src="assets/img/rickAndMorty.jpg"
+                        alt="Rick and morty t-shirt thumbnail"
+                      />
+                    </td>
+                    <td>Rick and morty Cotton T-Shirt</td>
+                    <td>{{ 299 | currency }}</td>
+                    <td>50</td>
+                    <td>
+                      <select class="form-select">
+                        <option value="null">Choose a size</option>
+                      </select>
+                    </td>
+                    <td>
+                      <input
+                        class="form-control"
+                        type="number"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-3 offset-md-9 mt-4">
+      <button
+        type="submit"
+        class="btn btn-success w-100"
+        disabled
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</form>

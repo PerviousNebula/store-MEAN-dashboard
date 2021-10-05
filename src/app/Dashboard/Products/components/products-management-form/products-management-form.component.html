@@ -1,0 +1,126 @@
+<form [formGroup]="productFg" (ngSubmit)="handleSubmit()">
+  <div class="row">
+    <h4 class="mb-4">General information</h4>
+    <div class="col-12 col-md-6">
+      <label class="form-label fw-bold">Product front image</label>
+      <input
+        type="file"
+        class="form-control d-none"
+      />
+      <div class="p-5 pointer w-50 rounded" style="border: 1px dashed black;">
+        <p class="text-muted small text-center">Select an image</p>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 mt-4 mt-md-0">
+      <label class="form-label fw-bold">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="name"
+      />
+    </div>
+    <div class="col-12 col-md-6 mt-4">
+      <label class="form-label fw-bold">Category</label>
+      <select
+        class="form-select"
+        formControlName="categoryId"
+      >
+        <option value="null">Choose the product category</option>
+      </select>
+    </div>
+    <div class="col-12 col-md-6 mt-4">
+      <label class="form-label fw-bold">Price</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="price"
+      />
+    </div>
+    <div class="col-12 col-md-6 mt-4">
+      <label class="form-label fw-bold">Short description</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="shortDesc"
+      />
+    </div>
+    <div class="col-12 col-md-6 mt-4">
+      <label class="form-label fw-bold">Long description</label>
+      <textarea
+        class="form-control"
+        cols="30"
+        rows="10"
+        style="resize: none;"
+        formControlName="lngDesc"
+      >
+      </textarea>
+    </div>
+    <div class="col-12 col-md-6 mt-4">
+      <label class="form-label fw-bold">Stock</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="stock"
+      />
+    </div>
+    <div class="col-12 col-md-6 mt-4">
+      <label class="form-label fw-bold">Archive</label>
+      <div class="form-check form-switch d-flex align-items-end">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          formControlName="archive"
+        />
+      </div>
+    </div>
+    <h4 class="mt-4 mb-4">Sizes</h4>
+    <div class="col-12 col-md-6">
+      <h5>Select available sizes for the product</h5>
+      <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+        <ng-container *ngFor="let size of sizes; let i = index">
+          <input
+            #sizeCheckbox
+            type="checkbox"
+            class="btn-check"
+            [id]="'btncheck' + i"
+            autocomplete="off"
+            (change)="addSizeToProduct(size, sizeCheckbox.checked)"
+          />
+          <label class="btn btn-outline-primary" [for]="'btncheck' + i">{{ size.name }}</label>
+        </ng-container>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 mt-4 mt-md-0">
+      <form [formGroup]="sizeFg" (ngSubmit)="createSize()">
+        <h5>Create a new size</h5>
+        <div class="input-group mb-3">
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            placeholder="Size name"
+            aria-label="Size name"
+            aria-describedby="button-addon2"
+          />
+          <button
+            class="btn btn-success"
+            type="submit"
+            id="button-addon2"
+            [disabled]="sizeFg.invalid"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-12 col-md-2 offset-md-10 mt-4">
+      <button
+        type="submit"
+        class="btn btn-success w-100"
+        [disabled]="productFg.invalid"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</form>

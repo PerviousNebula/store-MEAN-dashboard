@@ -1,0 +1,54 @@
+<form [formGroup]="shippingAddressesFg">
+  <button
+    *ngIf="addMultipleAddresses"
+    class="btn text-primary text-decoration-underline text-start mt-2 mb-2"
+    type="button"
+    (click)="addShippingAddress()"
+  >
+    <i class="fas fa-plus me-2"></i>
+    Add shipping address
+  </button>
+  <div
+    formGroupName="addresses"
+    *ngFor="let address of shippingAddressesFormArray.controls; let i = index"
+  >
+    <div [formGroupName]="i">
+      <div class="row mt-4">
+        <div class="col-12">
+          <label class="form-label fw-bold">Name</label>
+          <input class="form-control" type="text" formControlName="name" />
+        </div>
+        <div class="col-12 mt-4">
+          <label class="form-label fw-bold">Shipping Address 1</label>
+          <input formControlName="shippingAddress1" class="form-control" type="text" />
+        </div>
+        <div class="col-12 col-md-6 mt-4">
+          <label class="form-label fw-bold">Country</label>
+          <select formControlName="country" class="form-select">
+            <option value="null">Choose a country</option>
+          </select>
+        </div>
+        <div class="col-12 col-md-6 mt-4">
+          <label class="form-label fw-bold">State</label>
+          <input formControlName="state" class="form-control" type="text" />
+        </div>
+        <div class="col-12 col-md-6 mt-4">
+          <label class="form-label fw-bold">City</label>
+          <input formControlName="city" class="form-control" type="text" />
+        </div>
+        <div class="col-12 col-md-6 mt-4">
+          <label class="form-label fw-bold">Postal code</label>
+          <input formControlName="postalCode" class="form-control" type="text" />
+        </div>
+        <button
+          *ngIf="addMultipleAddresses"
+          type="button"
+          class="btn text-danger text-decoration-underline text-start mt-4 mb-4"
+          (click)="removeShippingAddress(i)"
+        >
+          Remove address
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
